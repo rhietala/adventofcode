@@ -1,14 +1,7 @@
-# adventofcode
+# Advent of code
 
-A Clojure library designed to ... well, that part is up to you.
+Clojure solutions for http://adventofcode.com/
 
-## Usage
-
-FIXME
-
-## License
-
-Copyright © 2015 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+* [Day 1](src/adventofcode/day01.clj)
+* [Day 2](src/adventofcode/day02.clj)
+* [Day 3](src/adventofcode/day03.clj)
