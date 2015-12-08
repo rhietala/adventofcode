@@ -11,7 +11,7 @@
 (defn parse-str
   [data s]
   (let [[_ in out] (re-matches #"^(.+) -> (.+)$" s)]
-    (merge data { (symbol out) in })))
+    (merge data { out in })))
 
 (defn overflow
   [i]
@@ -25,7 +25,7 @@
        (case (count command)
          1 (if (re-find #"^(\d+)$" (first command))
              (read-string (first command))
-             (calculate-signal (data (symbol (first command))) data))
+             (calculate-signal (data (first command)) data))
          2 (overflow (bit-not (calculate-signal (second command) data)))
          3 (let [op1 (calculate-signal (get command 0) data)
                  op2 (calculate-signal (get command 2) data)]
@@ -44,9 +44,9 @@
 (defn solve-part2
   [input]
   (let [data (reduce parse-str {} input-seq)
-        data2 (merge data { (symbol "b")
-                            (str ((solve-part1 input-seq) (symbol "a"))) })]
-    (fmap #(overflow (calculate-signal % data2)) data2)))
+        data2 (merge data
+                     { "b" (str ((solve-part1 input-seq) "a")) })]
+    (fmap #(calculate-signal % data2) data2)))
 
-(println (str "Part 1 solution: " ((solve-part1 input-seq) (symbol "a"))))
-(println (str "Part 2 solution: " ((solve-part2 input-seq) (symbol "a"))))
+(println (str "Part 1 solution: " ((solve-part1 input-seq) "a")))
+(println (str "Part 2 solution: " ((solve-part2 input-seq) "a")))
