@@ -9,3 +9,4 @@ Clojure solutions for http://adventofcode.com/
 * [Day 5](src/adventofcode/day05.clj)
 * [Day 6](src/adventofcode/day06.clj)
 * [Day 7](src/adventofcode/day07.clj)
+* [Day 8](src/adventofcode/day08.clj)
